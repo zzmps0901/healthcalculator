@@ -1,0 +1,89 @@
+@charset "utf-8";
+
+ul{
+    list-style:none;
+}
+
+
+
+/*label{
+    vertical-align:super;
+    margin-right: 1.5em;
+}*/
+
+body {
+    background-color: #f0efee;
+    font: normal 17px/1.5 Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size:16px;
+    color: #5E5F63;
+    text-align: center;
+}
+
+.wrapper {
+    width: 200px;
+    margin: 20px auto;
+}
+p {
+    margin: 15px 0 5px 0;
+}
+
+
+/*span {
+    margin-left: 0em;
+    display: inline-block;
+    vertical-align: top;
+    max-width: 15em;
+}
+strong {
+    font-weight: bold;
+}
+
+/*input[type="tel"]{
+    margin-left: 1em;
+    width: 3.7em;
+    height: 1em;
+    padding: 0.2em;
+}*/
+
+.text-box{
+    margin-top: 0.5em;
+}
+
+.text-label{
+    display: inline-block;
+    margin-left:1em; 
+}
+
+.text-unit{
+    display: inline-block;
+    margin-left:1em; 
+}
+
+
+
+text-explanation{
+    font-size: 0.75em;
+    font-weight: bold;
+}
+
+
+/*button*/
+input[type="button"],
+.button {	
+	position:relative;
+	display:inline-block;
+	overflow:hidden;
+	border:0.1em solid rgba(0,0,0,0.15);
+	background:#f3715d;
+	color:#fff!important;
+	text-shadow:0 -1px 0 rgba(0,0,0,0.17);
+	white-space:nowrap;
+	cursor:pointer;
+    border-right: 3em;
+    padding:0.5em;
+    margin-top: 1em;
+    border-radius:0.5em;
+    -moz-border-radius:0.5em;
+    -webkit-border-radius:0.5em;
+    -o-border-radius:0.5em;
+}

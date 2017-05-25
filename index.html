@@ -1,0 +1,183 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta name="viewport" content="initial-scale=1, width=device-width"/>
+        <meta charset="utf-8" />
+        <title>心脏年龄预测</title>
+        <!--<link href="css/main.css" rel="stylesheet" type="text/css" />
+
+        <!--[if lt IE 9]>
+          <script src="js/html5.js"></script>
+        <![endif]-->
+		<link rel="stylesheet" id="main-css" href="css/style.css?ver=3.6.1" type="text/css" media="all" />
+         <link href="css/radio-style.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/set1.css" />
+        <link type="image/x-icon" href="images/app_Icon.jpg" mce_href="images/app_Icon.jpg" rel="icon"> 
+        <link type="image/x-icon" href="images/app_Icon.jpg" mce_href="images/app_Icon.jpg" rel="shortcut icon">
+        <link rel="stylesheet" type="text/css" href="min/transition.min.css" />
+        <script type="text/javascript" src="js/zepto.min.js"></script>
+		<script type="text/javascript" src="js/jweixin-1.0.0.js"></script>
+        <script type="text/javascript" src="min/transition.min.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        
+        <script>
+          /*
+           * 注意：
+           * 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
+           * 2. 如果发现在 Android 不能分享自定义内容，请到官网下载最新的包覆盖安装，Android 自定义分享接口需升级至 6.0.2.58 版本及以上。
+           * 3. 常见问题及完整 JS-SDK 文档地址：http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
+           *
+           * 开发中遇到问题详见文档“附录5-常见错误及解决办法”解决，如仍未能解决可通过以下渠道反馈：
+           * 邮箱地址：weixin-open@qq.com
+           * 邮件主题：【微信JS-SDK反馈】具体问题
+           * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
+           */
+          wx.config({
+            debug: false,
+            appId: '<?php echo $signPackage["appId"];?>',
+            timestamp: <?php echo $signPackage["timestamp"];?>,
+            nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+            signature: '<?php echo $signPackage["signature"];?>',
+            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
+          });
+          wx.ready(function () {
+            var simgUrl="http://1.wxiheart.sinaapp.com/images/app_Icon.jpg";
+			var t="测测你的心脏年龄";
+			var c="你的心脏年龄是多少岁？";
+			var linkUrl="http://1.wxiheart.sinaapp.com/index.php";
+            // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+            wx.onMenuShareTimeline({
+                title: t, // 分享标题
+                desc:c,
+                link:linkUrl,
+                imgUrl: simgUrl // 分享图标
+            });
+            // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
+            wx.onMenuShareAppMessage({
+                title: t, // 分享标题
+                desc: c, // 分享描述
+                link:linkUrl,
+                imgUrl:simgUrl, // 分享图标
+            });
+          });
+        </script>
+    </head>
+	<body>
+        <div id="one"  data-role="page">
+                    <h1><strong>测测你的心脏年龄</strong></h1>
+                            <input class="customRadio" type="radio" name = "gender" value=1  id = "rMale"/>
+                            <label for = "rMale">男</label>
+                            <input class="customRadio" type="radio" name = "gender"   value=0  id = "rFemale"/>
+                            <label for="rFemale">女</label>
+                    <p/>                     						
+                            <span><strong>您抽烟吗?</strong></span><br>
+                            <input class="customRadio" type="radio" name="rSmoke" value=1  id = "rSmoke"/>
+                            <label for = "rSmoke">是</label>
+                            <input class="customRadio" type="radio" name="rSmoke" value=0  id = "rNotSmoke"/>
+                            <label for = "rNotSmoke">否</label>
+                    <p/>
+                    <p/>
+                            <span><strong>正在接受高血压治疗吗？</strong></span><br>
+                            <input class="customRadio" type="radio" name="rTFH" value=1  id = "rTFH"/>
+                            <label for = "rTFH">是</label>
+                            <input class="customRadio" type="radio" name="rTFH" value=0  id = "rNotTFH"/>
+                            <label for = "rNotTFH">否</label>
+                    <p/>
+                    <p/>
+                            <span><strong>有糖尿病吗?</strong></span><br>
+                            <input class="customRadio" type="radio" name="rDIAB" value=1  id = "rDIAB"/>
+                            <label for = "rDIAB">是</label>
+                            <input class="customRadio" type="radio" name="rDIAB" value=0  id = "rNotDIAB"/>
+                            <label for = "rNotDIAB">否</label>
+                    <p/>
+                    <div style="display:inline-block;margin-top:1em;text-align:left;margin-left:15%">
+                        <span class="input input--haruki" style="display:inline-block"  >
+                                    <input class="input__field input__field--haruki" type="tel" id="tbAge"/>
+                                    <label class="input__label input__label--haruki" for="tbAge">
+                                        <span class="input__label-content input__label-content--haruki">年龄（岁）</span>
+                                    </label>
+                                </span>
+                        <span class="input input--haruki" style="display:inlineblock" margin-left = 50px >
+                                    <input class="input__field input__field--haruki" type="tel" id="tbHeight"/>
+                                    <label class="input__label input__label--haruki" for="tbHeight">
+                                        <span class="input__label-content input__label-content--haruki">身高（厘米）</span>
+                                    </label>
+                                </span>
+            </div>
+                    <div style="display:inline-block;margin-top:1em;text-align:left;margin-left:15%" >
+                                <span class="input input--haruki" style="display:inline-block;margin">
+                                    <input class="input__field input__field--haruki" type="tel" id="tbWeight" />
+                                    <label class="input__label input__label--haruki" for="tbWeight">
+                                        <span class="input__label-content input__label-content--haruki">体重(公斤)</span>
+                                    </label>
+                                </span>
+                    
+                                <span class="input input--haruki" style="display:inline-block" margin-left = 50px>
+                                    <input class="input__field input__field--haruki" type="tel" id="tbSBP" />
+                                    <label class="input__label input__label--haruki" for="tbSBP">
+                                        <span class="input__label-content input__label-content--haruki">收缩压(mmHg)</span>
+                                    </label>
+                                </span>
+                    </div>
+                    <br>
+                           <span><text-explanation>收缩压是测血压时2个数值中较大的那个(如120/80 mmHg，120是收缩压)</text-explanation></span>
+                    <br>
+                            <a class=" button large primary" id="btCommitResult" transition="slide" href="#two">
+                                <span>显示结果</span>
+                            </a>
+                    <br>
+                            <span><text-explanation>该心脏风险评估计算基于Framingham心脏研究，预测未来10年心脏风险，适合年龄29岁以上无心脏病的童鞋使用。</text-explanation></span>      
+                </div>
+
+        <div id="two" data-role="page" data-title="心脏年龄预测">
+                    <h1><strong>心脏风险预测结果</strong></h1>
+                            <div class="container">						
+                                <canvas id="sceneResult" height = 800 width = 800><p> :(  抱歉~   您的浏览器貌似不支持HTML5的标签"canvas"，试试更换成
+    Chrome,FireFox,IE9...</p></canvas>
+                            </div>                            
+                            <a transition="fade" href="#one"id="btRetry" class=" button large primary">
+                                <span>重新测试</span></a><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span><a href="http://mp.weixin.qq.com/s?__biz=MzA5OTg0NTYyMA==&mid=206982242&idx=1&sn=7240d147e1675684ff956d524483b878&scene=1&key=b2574200810f04e80f8c412e519bdbfef4dd94a637ced2b1f497fff89050558a91050fe1134d328eaa77b9d54319da26&ascene=1&uin=MjMxMjM0ODcyOA%3D%3D&devicetype=webwx&version=70000001&pass_ticket=ARjORe1X5YZfWoPkt%2Bf2Tb7nNdeu4yvgRJLZpE7U7g2gzuA14OQ7WbCFqMol85a%2F" class=" button large primary" id="btFollow"><span>关注我们</span></a>  
+                    <br>
+                            <span style = 'font-size:8px;font-weight:bold;color:rgba(0,101,159,.85)'>心脏健康 随时，随地</span><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span><span style = 'font-size:8px;font-weight:bold;color:rgba(0,101,159,.85)' id = "lbPublic">宏康‘心脏助手’公众号</span>                            
+                </div>
+
+        <script src="js/classie.js"></script>
+        <script>
+			(function() {
+				// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+				if (!String.prototype.trim) {
+					(function() {
+						// Make sure we trim BOM and NBSP
+						var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+						String.prototype.trim = function() {
+							return this.replace(rtrim, '');
+						};
+					})();
+				}
+
+				[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+					// in case the input is already filled..
+					if( inputEl.value.trim() !== '' ) {
+						classie.add( inputEl.parentNode, 'input--filled' );
+					}
+
+					// events:
+					inputEl.addEventListener( 'focus', onInputFocus );
+					inputEl.addEventListener( 'blur', onInputBlur );
+				} );
+
+				function onInputFocus( ev ) {
+					classie.add( ev.target.parentNode, 'input--filled' );
+				}
+
+				function onInputBlur( ev ) {
+					if( ev.target.value.trim() === '' ) {
+						classie.remove( ev.target.parentNode, 'input--filled' );
+					}
+				}
+			})();
+		</script>
+    </body>
+</html>
